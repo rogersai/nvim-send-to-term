@@ -30,7 +30,7 @@ function! s:SendLinesToTerm(lines) dict
     if len(a:lines) > 1
         let line = self.begin . join(a:lines, self.newline) . self.end
     else
-        let line = a:lines[0] . "\n"
+        let line = self.begin . a:lines[0] . self.end
     endif
     call jobsend(self.term_id, line)
     " If sending over multiple commands ([count]ss), slow down a little to
